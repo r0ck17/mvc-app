@@ -23,6 +23,8 @@
         <jacksonDatabindVersion>2.15.2</jacksonDatabindVersion>
         <lombokVersion>1.18.30</lombokVersion>
         <jakartaServletVersion>6.0.0</jakartaServletVersion>
+        <jakartaServletJspApiVersion>3.1.1</jakartaServletJspApiVersion>
+        <jakartaServletJspJstlVersion>2.0.0</jakartaServletJspJstlVersion>
     </properties>
 
     <dependencyManagement>
@@ -49,7 +51,18 @@
                 <version>${jakartaServletVersion}</version>
                 <scope>provided</scope>
             </dependency>
+            <dependency>
+                <groupId>jakarta.servlet.jsp</groupId>
+                <artifactId>jakarta.servlet.jsp-api</artifactId>
+                <version>${jakartaServletJspApiVersion}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.web</groupId>
+                <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+                <version>${jakartaServletJspJstlVersion}</version>
+                <scope>runtime</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
-
 </project>
