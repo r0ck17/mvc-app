@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
@@ -19,8 +20,13 @@ public class UserDaoJsonImpl implements UserDao {
     private UserDaoJsonImpl() {
     }
 
-    public static UserDaoJsonImpl getInstance() {
+    public static UserDao getInstance() {
         return INSTANCE;
+    }
+
+    @Override
+    public Map<String, User> findAll() {
+        return getAllUsersFromJson();
     }
 
     @Override
@@ -28,13 +34,13 @@ public class UserDaoJsonImpl implements UserDao {
         Map<String, User> users = getAllUsersFromJson();
         users.put(user.getLogin(), user);
         UserDaoJsonImpl.writeUsersToJson(users);
+
         return true;
     }
-
-
     @Override
     public Optional<User> getUserByLogin(String login) {
-        return Optional.ofNullable(getAllUsersFromJson().get(login));
+        Map<String, User> allUsersFromJson = getAllUsersFromJson();
+        return Optional.ofNullable(allUsersFromJson.get(login));
     }
 
     public static void generateDatabase() {
@@ -46,11 +52,14 @@ public class UserDaoJsonImpl implements UserDao {
             }
         }
 
-        User user1 = new User("user", "1", "test@mail.ru", "userName", 25);
-        User user2 = new User("user", "1", "test@mail.ru", "userName", 25);
+        User user1 = new User("user1", "1", "test1@mail.ru", "userName1", 25);
+        User user2 = new User("user2", "1", "test2@mail.ru", "userName2", 30);
 
-        UserDaoJsonImpl.getInstance().save(user1);
-        UserDaoJsonImpl.getInstance().save(user2);
+        Map<String, User> users = new HashMap<>() {{
+            put(user1.getLogin(), user1);
+            put(user2.getLogin(), user2);
+        }};
+        writeUsersToJson(users);
     }
 
     private static void writeUsersToJson(Map<String, User> users) {
@@ -67,7 +76,8 @@ public class UserDaoJsonImpl implements UserDao {
     private Map<String, User> getAllUsersFromJson() {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            return objectMapper.readValue(JSON_FILE_PATH.toFile(), new TypeReference<Map<String, User>>() {});
+            return objectMapper.readValue(JSON_FILE_PATH.toFile(), new TypeReference<Map<String, User>>() {
+            });
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

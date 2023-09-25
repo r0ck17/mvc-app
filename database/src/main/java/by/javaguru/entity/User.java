@@ -1,15 +1,12 @@
 package by.javaguru.entity;
 
-import lombok.Builder;
-import lombok.NoArgsConstructor;
-
 public class User {
     private static long counterId = 1;
     private long id;
     private String login;
     private String password;
-    private String email;
     private String name;
+    private String email;
     private int age;
 
     public User() {
@@ -47,5 +44,33 @@ public class User {
 
     public int getAge() {
         return age;
+    }
+
+    public static void setCounterId(long counterId) {
+        User.counterId = counterId;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 }
