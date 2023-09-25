@@ -52,13 +52,14 @@ public class UserDaoJsonImpl implements UserDao {
             }
         }
 
-        User user1 = new User("user1", "1", "test1@mail.ru", "userName1", 25);
-        User user2 = new User("user2", "1", "test2@mail.ru", "userName2", 30);
+        User user1 = new User("aaaaaaa", "aaaaaaa", "test@mail.ru", "UserNameOne", 25);
+        User user2 = new User("bbbbbbb", "bbbbbbb", "test@mail.ru", "userName", 30);
 
         Map<String, User> users = new HashMap<>() {{
             put(user1.getLogin(), user1);
             put(user2.getLogin(), user2);
         }};
+
         writeUsersToJson(users);
     }
 
@@ -76,8 +77,7 @@ public class UserDaoJsonImpl implements UserDao {
     private Map<String, User> getAllUsersFromJson() {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            return objectMapper.readValue(JSON_FILE_PATH.toFile(), new TypeReference<Map<String, User>>() {
-            });
+            return objectMapper.readValue(JSON_FILE_PATH.toFile(), new TypeReference<Map<String, User>>() {});
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
