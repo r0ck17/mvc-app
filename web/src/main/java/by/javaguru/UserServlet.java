@@ -1,6 +1,6 @@
 package by.javaguru;
 
-import by.javaguru.dto.CreateUserDto;
+import by.javaguru.dto.UserDto;
 import by.javaguru.entity.User;
 import by.javaguru.exception.ValidationException;
 import by.javaguru.service.UserService;
@@ -30,7 +30,7 @@ public class UserServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         HttpSession session = req.getSession();
         String login = ((User) session.getAttribute("user")).getLogin();
         String password = req.getParameter("password");
@@ -38,7 +38,7 @@ public class UserServlet extends HttpServlet {
         String email = req.getParameter("email");
         String age = req.getParameter("age");
 
-        CreateUserDto createUserDto = new CreateUserDto(login, password, email, name, age);
+        UserDto createUserDto = new UserDto(login, password, email, name, age);
 
         try {
             userService.save(createUserDto);

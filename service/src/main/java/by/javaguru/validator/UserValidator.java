@@ -1,8 +1,9 @@
 package by.javaguru.validator;
 
-import by.javaguru.dto.CreateUserDto;
 
-public class UserValidator implements Validator<CreateUserDto> {
+import by.javaguru.dto.UserDto;
+
+public class UserValidator implements Validator<UserDto> {
     private static final UserValidator INSTANCE = new UserValidator();
     private final String LOGIN_PATTERN = "[a-zA-Z]{6,20}";
     private final String PASSWORD_PATTERN = "\\w{6,20}";
@@ -17,7 +18,7 @@ public class UserValidator implements Validator<CreateUserDto> {
     }
 
     @Override
-    public ValidatorResult validate(CreateUserDto userDto) {
+    public ValidatorResult validate(UserDto userDto) {
         ValidatorResult validatorResult = new ValidatorResult();
 
         if (!isMatchesRegexp(userDto.getLogin(), LOGIN_PATTERN)) {

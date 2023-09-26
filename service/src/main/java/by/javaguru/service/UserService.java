@@ -2,11 +2,9 @@ package by.javaguru.service;
 
 import by.javaguru.dao.UserDao;
 import by.javaguru.dao.UserDaoJsonImpl;
-import by.javaguru.dto.CreateUserDto;
 import by.javaguru.dto.UserDto;
 import by.javaguru.entity.User;
 import by.javaguru.exception.ValidationException;
-import by.javaguru.mapper.CreateUserMapper;
 import by.javaguru.mapper.UserDtoMapper;
 import by.javaguru.validator.UserValidator;
 import by.javaguru.validator.ValidatorResult;
@@ -17,7 +15,6 @@ public class UserService {
     private static final UserService INSTANCE = new UserService();
     private static final UserDao userDao = UserDaoJsonImpl.getInstance();
     private static final UserDtoMapper USER_DTO_MAPPER = UserDtoMapper.getInstance();
-    private static final CreateUserMapper CREATE_USER_MAPPER = CreateUserMapper.getInstance();
 
     private UserService() {}
 
@@ -25,15 +22,13 @@ public class UserService {
         return INSTANCE;
     }
 
-    public boolean save(CreateUserDto createUserDto) {
+    public boolean save(UserDto userDto) {
         UserValidator userValidator = UserValidator.getInstance();
-        ValidatorResult validatorResult = userValidator.validate(createUserDto);
+        ValidatorResult validatorResult = userValidator.validate(userDto);
 
         if (!validatorResult.isValid()) {
             throw new ValidationException(validatorResult.getErrors());
         }
-
-        UserDto userDto = CREATE_USER_MAPPER.mapFrom(createUserDto);
 
         User user = USER_DTO_MAPPER.mapFrom(userDto);
 

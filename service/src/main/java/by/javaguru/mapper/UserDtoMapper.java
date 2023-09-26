@@ -19,7 +19,7 @@ public class UserDtoMapper implements Mapper<UserDto, User> {
                 object.getPassword(),
                 object.getEmail(),
                 object.getName(),
-                object.getAge()
+                Integer.parseInt(object.getAge())
         );
     }
 }

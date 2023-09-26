@@ -5,11 +5,11 @@ public class UserDto {
     private String password;
     private String email;
     private String name;
-    private int age;
+    private String age;
 
     public UserDto() {}
 
-    public UserDto(String login, String password, String email, String name, int age) {
+    public UserDto(String login, String password, String email, String name, String age) {
         this.login = login;
         this.password = password;
         this.email = email;
@@ -49,11 +49,11 @@ public class UserDto {
         this.name = name;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 }

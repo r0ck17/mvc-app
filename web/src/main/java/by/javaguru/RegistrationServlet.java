@@ -1,6 +1,6 @@
 package by.javaguru;
 
-import by.javaguru.dto.CreateUserDto;
+import by.javaguru.dto.UserDto;
 import by.javaguru.entity.User;
 import by.javaguru.exception.ValidationException;
 import by.javaguru.service.UserService;
@@ -27,20 +27,21 @@ public class RegistrationServlet extends HttpServlet {
     }
 
     @Override
-    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
         String email = req.getParameter("email");
         String name = req.getParameter("name");
         String age = req.getParameter("age");
 
-        CreateUserDto createUserDto = new CreateUserDto(login, password, email, name, age);
+        UserDto createUserDto = new UserDto(login, password, email, name, age);
         HttpSession session = req.getSession();
 
         try {
             userService.save(createUserDto);
             Optional<User> user = userService.getUserByLogin(login);
             session.setAttribute("user", user.get());
+            session.setAttribute("flash", "You have been successfully registered.");
             resp.sendRedirect(getServletContext().getContextPath() + "/user");
         } catch (ValidationException e) {
             session.setAttribute("errors", e.getErrors());
