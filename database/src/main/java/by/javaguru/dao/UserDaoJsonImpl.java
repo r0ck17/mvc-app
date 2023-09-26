@@ -52,8 +52,8 @@ public class UserDaoJsonImpl implements UserDao {
             }
         }
 
-        User user1 = new User("aaaaaaa", "aaaaaaa", "test@mail.ru", "UserNameOne", 25);
-        User user2 = new User("bbbbbbb", "bbbbbbb", "test@mail.ru", "userName", 30);
+        User user1 = new User("firstUser", "firstUser", "test@mail.ru", "firstUser", 25);
+        User user2 = new User("secondUser", "secondUser", "testtest@mail.ru", "secondUser", 30);
 
         Map<String, User> users = new HashMap<>() {{
             put(user1.getLogin(), user1);
