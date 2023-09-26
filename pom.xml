@@ -21,7 +21,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jacksonCoreVersion>2.15.2</jacksonCoreVersion>
         <jacksonDatabindVersion>2.15.2</jacksonDatabindVersion>
-        <lombokVersion>1.18.30</lombokVersion>
         <jakartaServletVersion>6.0.0</jakartaServletVersion>
         <jakartaServletJspApiVersion>3.1.1</jakartaServletJspApiVersion>
         <jakartaServletJspJstlVersion>2.0.0</jakartaServletJspJstlVersion>
@@ -38,12 +37,6 @@
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-databind</artifactId>
                 <version>${jacksonDatabindVersion}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>1.18.30</version>
-                <scope>${lombokVersion</scope>
             </dependency>
             <dependency>
                 <groupId>jakarta.servlet</groupId>
