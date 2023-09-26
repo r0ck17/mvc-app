@@ -11,13 +11,13 @@
             <label for="login">login</label>
             <input type="text" name="login" id="login" value="${sessionScope.user.login}" disabled><br>
             <label for="password">password</label>
-            <input type="text" name="password" id="password" value="${sessionScope.user.password}"><br>
+            <input type="text" name="password" id="password" value="${sessionScope.user.password}" required><br>
             <label for="email">email</label>
-            <input type="text" name="email" id="email" value="${sessionScope.user.email}"><br>
+            <input type="text" name="email" id="email" value="${sessionScope.user.email}" required><br>
             <label for="name">name</label>
-            <input type="text" name="name" id="name" value="${sessionScope.user.name}"><br>
+            <input type="text" name="name" id="name" value="${sessionScope.user.name}" required><br>
             <label for="age">age</label>
-            <input type="text" name="age" id="age" value="${sessionScope.user.age}"><br>
+            <input type="text" name="age" id="age" value="${sessionScope.user.age}" required><br>
             <button type="submit">Set new information</button>
         </form>
         <c:if test="${not empty sessionScope.flash}">

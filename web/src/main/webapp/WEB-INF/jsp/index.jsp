@@ -10,9 +10,9 @@
         <h3>Login</h3>
         <form action="${pageContext.request.contextPath}/" method="post">
             <label for="name">login</label>
-            <input type="text" name="login" id="name"><br>
+            <input type="text" name="login" id="name" required><br>
             <label for="password">password</label>
-            <input type="password" name="password" id="password"><br>
+            <input type="password" name="password" id="password" required><br>
             <button type="submit">Sign in</button>
         </form>
         <c:if test="${not empty sessionScope.flash}">
