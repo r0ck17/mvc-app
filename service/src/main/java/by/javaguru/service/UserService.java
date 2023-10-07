@@ -1,7 +1,7 @@
 package by.javaguru.service;
 
 import by.javaguru.dao.UserDao;
-import by.javaguru.dao.UserDaoJsonImpl;
+import by.javaguru.dao.UserDaoJdbcImpl;
 import by.javaguru.dto.UserDto;
 import by.javaguru.entity.User;
 import by.javaguru.exception.ValidationException;
@@ -13,7 +13,7 @@ import java.util.Optional;
 
 public class UserService {
     private static final UserService INSTANCE = new UserService();
-    private static final UserDao userDao = UserDaoJsonImpl.getInstance();
+    private static final UserDao userDao = UserDaoJdbcImpl.getInstance();
     private static final UserDtoMapper USER_DTO_MAPPER = UserDtoMapper.getInstance();
 
     private UserService() {}

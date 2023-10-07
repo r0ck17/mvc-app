@@ -1,7 +1,6 @@
 package by.javaguru.entity;
 
 public class User {
-    private static long counterId = 1;
     private long id;
     private String login;
     private String password;
@@ -14,7 +13,6 @@ public class User {
     }
 
     public User(String login, String password, String email, String name, int age) {
-        this.id = counterId++;
         this.login = login;
         this.password = password;
         this.email = email;
@@ -44,10 +42,6 @@ public class User {
 
     public int getAge() {
         return age;
-    }
-
-    public static void setCounterId(long counterId) {
-        User.counterId = counterId;
     }
 
     public void setId(long id) {
